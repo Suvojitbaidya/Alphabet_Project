@@ -1,0 +1,336 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', cursive;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    background: linear-gradient(-45deg, #ff9a76, #ff6b9e, #6ac8ff, #6aff8c);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+h1, h2, h3 {
+    font-family: 'Fredoka One', cursive;
+    color: #6a4c93;
+}
+
+/* Homepage Styles */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message {
+    font-size: 1.5rem;
+    color: #8a5a44;
+    margin-top: 10px;
+}
+
+.alphabet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.letter-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #ff9a76;
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+.letter-box:hover {
+    transform: scale(1.1);
+    background-color: #ff7b54;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #6a4c93;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+}
+
+/* Letter Page Styles */
+.letter-page .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.letter-page header {
+    margin-bottom: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.letter-display {
+    font-size: 10rem;
+    text-align: center;
+    color: #ff9a76;
+    text-shadow: 5px 5px 0 #ffe0b2;
+    margin: 20px 0;
+    animation: pulse 2s infinite;
+}
+
+.word-list {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.word-item {
+    font-size: 2rem;
+    padding: 15px;
+    margin: 10px 0;
+    border-bottom: 2px dashed #f3e5f5;
+    transition: all 0.3s ease;
+}
+
+.word-item:last-child {
+    border-bottom: none;
+}
+
+.word-item:hover {
+    animation: wiggle 0.5s ease;
+    color: #6a4c93;
+    transform: scale(1.05);
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.nav-button {
+    padding: 12px 25px;
+    background-color: #6a4c93;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.nav-button:hover {
+    background-color: #8a6cb3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.home-button {
+    background-color: #ff9a76;
+}
+
+.home-button:hover {
+    background-color: #ff7b54;
+}
+
+.letter-nav {
+    display: flex;
+    gap: 15px;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #bdbdbd;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes wiggle {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(5deg);
+    }
+    75% {
+        transform: rotate(-5deg);
+    }
+}
+
+/* Background Elements */
+.floating-letters {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.floating-letter {
+    position: absolute;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.6);
+    animation: float 10s linear infinite;
+    font-family: 'Fredoka One', cursive;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.cloud {
+    position: fixed;
+    color: white;
+    opacity: 0.3;
+    z-index: -1;
+    animation: floatCloud linear infinite;
+}
+
+@keyframes floatCloud {
+    0% {
+        transform: translateX(-100px);
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px));
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .alphabet-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+    
+    .letter-box {
+        height: 80px;
+        font-size: 2.5rem;
+    }
+    
+    .letter-display {
+        font-size: 8rem;
+    }
+    
+    .word-item {
+        font-size: 1.5rem;
+    }
+
+    .floating-letter {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .alphabet-grid {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        gap: 10px;
+    }
+    
+    .letter-box {
+        height: 60px;
+        font-size: 2rem;
+        border-radius: 10px;
+    }
+    
+    .letter-display {
+        font-size: 6rem;
+    }
+    
+    .word-item {
+        font-size: 1.3rem;
+        padding: 10px;
+    }
+    
+    .nav-button {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .welcome-message {
+        font-size: 1.2rem;
+    }
+
+    .floating-letter {
+        font-size: 14px;
+    }
+}

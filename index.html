@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabet Adventure</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Alphabet Adventure</h1>
+            <p class="welcome-message">Let's learn the alphabet together!</p>
+        </header>
+        
+        <main class="alphabet-grid">
+            <a href="A.html" class="letter-box">A</a>
+            <a href="B.html" class="letter-box">B</a>
+            <a href="C.html" class="letter-box">C</a>
+            <a href="D.html" class="letter-box">D</a>
+            <a href="E.html" class="letter-box">E</a>
+            <a href="F.html" class="letter-box">F</a>
+            <a href="G.html" class="letter-box">G</a>
+            <a href="H.html" class="letter-box">H</a>
+            <a href="I.html" class="letter-box">I</a>
+            <a href="J.html" class="letter-box">J</a>
+            <a href="K.html" class="letter-box">K</a>
+            <a href="L.html" class="letter-box">L</a>
+            <a href="M.html" class="letter-box">M</a>
+            <a href="N.html" class="letter-box">N</a>
+            <a href="O.html" class="letter-box">O</a>
+            <a href="P.html" class="letter-box">P</a>
+            <a href="Q.html" class="letter-box">Q</a>
+            <a href="R.html" class="letter-box">R</a>
+            <a href="S.html" class="letter-box">S</a>
+            <a href="T.html" class="letter-box">T</a>
+            <a href="U.html" class="letter-box">U</a>
+            <a href="V.html" class="letter-box">V</a>
+            <a href="W.html" class="letter-box">W</a>
+            <a href="X.html" class="letter-box">X</a>
+            <a href="Y.html" class="letter-box">Y</a>
+            <a href="Z.html" class="letter-box">Z</a>
+        </main>
+        
+        <footer>
+            <p>Have fun learning!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating letters background
+        document.addEventListener('DOMContentLoaded', function() {
+            // Floating letters
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const container = document.createElement('div');
+            container.className = 'floating-letters';
+            document.body.appendChild(container);
+            
+            for (let i = 0; i < 30; i++) {
+                const letter = document.createElement('div');
+                letter.className = 'floating-letter';
+                letter.textContent = letters.charAt(Math.floor(Math.random() * letters.length));
+                letter.style.left = Math.random() * 100 + 'vw';
+                letter.style.top = Math.random() * 100 + 'vh';
+                letter.style.animationDuration = 5 + Math.random() * 15 + 's';
+                letter.style.animationDelay = Math.random() * 5 + 's';
+                letter.style.fontSize = (20 + Math.random() * 30) + 'px';
+                container.appendChild(letter);
+            }
+            
+            // Floating clouds
+            for (let i = 0; i < 5; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.innerHTML = '☁️';
+                cloud.style.top = (Math.random() * 80) + 'vh';
+                cloud.style.fontSize = (30 + Math.random() * 50) + 'px';
+                cloud.style.animationDuration = (30 + Math.random() * 60) + 's';
+                document.body.appendChild(cloud);
+            }
+
+            // Make letter boxes bounce on hover
+            const letterBoxes = document.querySelectorAll('.letter-box');
+            letterBoxes.forEach(box => {
+                box.addEventListener('mouseover', () => {
+                    box.style.animation = 'bounce 0.5s ease';
+                });
+                box.addEventListener('animationend', () => {
+                    box.style.animation = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
